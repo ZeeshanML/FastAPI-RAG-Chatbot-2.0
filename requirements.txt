@@ -1,0 +1,18 @@
+langchain
+langchain-openai
+langchain-core
+langchain_community
+docx2txt
+pypdf
+# langchain_chroma
+fastapi
+uvicorn
+streamlit
+python-dotenv
+python-multipart
+aiofiles
+aiosqlite
+pinecone-client
+langchain-pinecone
+supabase
+asyncpg
