@@ -1,98 +1,93 @@
-import aiosqlite
-import sqlite3
-from datetime import datetime
-from contextlib import asynccontextmanager
-from typing import AsyncGenerator
+from supabase import create_client, Client
+from datetime import datetime, timezone
 
-DB_NAME = "rag_app.db"
+from typing import Dict, List
+import os
+from dotenv import load_dotenv
 
-# Connection pool
-async def get_db() -> AsyncGenerator[aiosqlite.Connection, None]:
-    async with aiosqlite.connect(DB_NAME) as conn:
-        yield conn
+load_dotenv()
 
-@asynccontextmanager
-async def get_db_context():
-    async with aiosqlite.connect(DB_NAME) as conn:
-        try:
-            yield conn
-        finally:
-            await conn.close()
+supabase: Client = create_client(
+    os.getenv("SUPABASE_URL"),
+    os.getenv("SUPABASE_KEY")
+)
 
-# Initialize tables
-def init_db():
-    conn = sqlite3.connect(DB_NAME)
+async def get_all_documents() -> List[Dict]:
     try:
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS application_logs
-            (id INTEGER PRIMARY KEY AUTOINCREMENT,
-            session_id TEXT,
-            user_query TEXT,
-            gpt_response TEXT,
-            model TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
-        ''')
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS document_store
-            (id INTEGER PRIMARY KEY AUTOINCREMENT,
-            filename TEXT,
-            upload_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
-        ''')
-        conn.commit()
-    finally:
-        conn.close()
+        response = supabase.table("document_store").select("*")\
+            .order("upload_timestamp", desc=True)\
+            .execute()
+        return response.data
+    except Exception as e:
+        print(f"Error fetching documents: {e}")
+        return []
+    
 
-async def get_all_documents():
-    async with get_db_context() as conn:
-        async with conn.execute(
-            '''SELECT id, filename, upload_timestamp FROM document_store ORDER BY upload_timestamp DESC'''
-        ) as cursor:
-            documents = await cursor.fetchall()
-            columns = ['id', 'filename', 'upload_timestamp']
-            return [dict(zip(columns, doc)) for doc in documents]
+async def insert_application_logs(session_id: str, user_query: str, gpt_response: str, model: str):
+    try:
+        supabase.table("application_logs").insert({
+            "session_id": session_id,
+            "user_query": user_query,
+            "gpt_response": gpt_response,
+            "model": model,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }).execute()
+    except Exception as e:
+        print(f"Error inserting application logs: {e}")
 
-async def insert_application_logs(session_id, user_query, gpt_response, model):
-    async with get_db_context() as conn:
-        await conn.execute(
-            '''INSERT INTO application_logs (session_id, user_query, gpt_response, model) 
-               VALUES (?, ?, ?, ?)''', 
-            (session_id, user_query, gpt_response, model)
-        )
-        await conn.commit()
 
-async def get_chat_history(session_id):
-    async with get_db_context() as conn:
-        async with conn.execute('''
-            SELECT user_query, gpt_response FROM application_logs
-            WHERE session_id = ? ORDER BY created_at''', 
-            (session_id,)
-        ) as cursor:
-            rows = await cursor.fetchall()
-            messages = []
-            for row in rows:
-                messages.extend([
-                    {"role": "human", "content": row[0]},
-                    {"role": "ai", "content": row[1]}
-                ])
-            return messages
+async def get_chat_history(session_id: str) -> List[Dict]:
+    try:
+        response = supabase.table("application_logs")\
+            .select("user_query, gpt_response")\
+            .eq("session_id", session_id)\
+            .order("created_at")\
+            .execute()
+        
+        messages = []
+        for row in response.data:
+            messages.extend([
+                {"role": "human", "content": row['user_query']},
+                {"role": "ai", "content": row['gpt_response']}
+            ])
+        return messages
+    except Exception as e:
+        print(f"Error fetching chat history: {e}")
+        return []
+    
 
-async def insert_document_record(filename):
-    async with get_db_context() as conn:
-        cursor = await conn.execute(
-            '''INSERT INTO document_store (filename) VALUES (?)''', 
-            (filename,)
-        )
-        file_id = cursor.lastrowid
-        await conn.commit()
-        return file_id
+async def insert_document_record(filename: str, s3_url: str) -> int:
+    try:
+        response = supabase.table("document_store").insert({
+            "filename": filename,
+            "s3_url": s3_url,
+            "upload_timestamp": datetime.now(timezone.utc).isoformat()
+        }).execute()
+        return response.data[0]['id']
+    except Exception as e:
+        print(f"Error inserting document record: {e}")
+        return None
+    
 
-async def delete_document_record(file_id):
-    async with get_db_context() as conn:
-        await conn.execute(
-            '''DELETE FROM document_store WHERE id = ?''', 
-            (file_id,)
-        )
-        await conn.commit()
+async def get_document_by_id(file_id: int) -> Dict:
+    try:
+        response = supabase.table("document_store")\
+            .select("*")\
+            .eq("id", file_id)\
+            .execute()
+        return response.data[0] if response.data else None
+    except Exception as e:
+        print(f"Error fetching document by ID: {e}")
+        return None
+    
+
+async def delete_document_record(file_id: int) -> bool:
+    try:
+        supabase.table("document_store")\
+            .delete()\
+            .eq("id", file_id)\
+            .execute()
         return True
-
-init_db()
+    except Exception as e:
+        print(f"Error deleting document record: {e}")
+        return False

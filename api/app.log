@@ -164,3 +164,53 @@ INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 INFO:root:Session ID: 166fa7eb-2db6-4526-bc7b-075e848eed31, AI Response: AetherTech Innovations, Inc. was founded in 2015.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:root:Session ID: 9271cf31-7c68-40eb-b509-ce0e07e5dba3, User Query: hi, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.9271cf31-7c68-40eb-b509-ce0e07e5dba3&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:Session ID: 9271cf31-7c68-40eb-b509-ce0e07e5dba3, AI Response: Hello! How can I assist you today?
+ERROR:root:Error uploading and indexing document: 500: Failed to store document metadata
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 400 Bad Request"
+ERROR:root:Error uploading and indexing document: 500: Failed to store document metadata
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 401 Unauthorized"
+ERROR:root:Error uploading and indexing document: 500: Failed to store document metadata
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, User Query: where are the headquarters of aethertech solutions?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.a20338af-0648-4691-b125-ba17ce6fddd1&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 401 Unauthorized"
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, AI Response: The headquarters of AetherTech Innovations, Inc. are located at 789 Cloudline Drive, Future City, New York, USA.
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, User Query: what is its mission?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.a20338af-0648-4691-b125-ba17ce6fddd1&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 401 Unauthorized"
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, AI Response: The mission of the company is not explicitly stated in the provided context. However, based on the information about its focus on sustainability, technological excellence, providing satellite internet access to underserved areas, and supporting renewable energy and IoT networks, we can infer that its mission likely involves delivering innovative, sustainable technology solutions that enhance communication and connectivity, particularly in remote and underserved regions. The company seems dedicated to empowering communities through technology while promoting environmental sustainability.
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, User Query: what is its mission?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.a20338af-0648-4691-b125-ba17ce6fddd1&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: a20338af-0648-4691-b125-ba17ce6fddd1, AI Response: The mission of the company is to provide innovative communication solutions for remote industries, smart cities, and emerging markets, while focusing on sustainability and technological excellence. This mission is supported by their strategic partnerships with leading space agencies and telecommunications providers.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.1 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.2 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.2 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.3 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.3 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:root:Session ID: 16675861-a5ff-408e-8287-d9ea0a06fe5e, User Query: where is AetherTech Innovations located?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.16675861-a5ff-408e-8287-d9ea0a06fe5e&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 16675861-a5ff-408e-8287-d9ea0a06fe5e, AI Response: AetherTech Innovations, Inc. is located at 789 Cloudline Drive, Future City, New York, USA.

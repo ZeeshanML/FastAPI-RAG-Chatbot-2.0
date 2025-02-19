@@ -19,6 +19,7 @@ class QueryResponse(BaseModel):
 class DocumentInfo(BaseModel):
     id: int
     filename: str
+    s3_url: str
     upload_timestamp: datetime
 
 class DeleteFileRequest(BaseModel):
