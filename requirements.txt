@@ -16,3 +16,4 @@ pinecone-client
 langchain-pinecone
 supabase
 asyncpg
+boto3
