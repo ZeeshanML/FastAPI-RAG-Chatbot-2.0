@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-API_BASE_URL = os.getenv("API_BASE_URL")
+API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 
 def get_chat_response(question, session_id, model):
     headers = {'accept': 'application/json', 'Content-Type': 'application/json'}
