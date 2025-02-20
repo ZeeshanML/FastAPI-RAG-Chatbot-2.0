@@ -1,6 +1,5 @@
 from fastapi import FastAPI, UploadFile, HTTPException, File
 import aiofiles
-import asyncio
 from pydantic_models import QueryInput, QueryResponse, DocumentInfo, DeleteFileRequest
 from langchain_utils import get_rag_chain
 from s3_utils import S3Client
@@ -9,7 +8,6 @@ from pinecone_utils import index_document_to_pinecone, delete_doc_from_pinecone
 import os
 import uuid
 import logging
-import shutil
 
 logging.basicConfig(filename="app.log", level=logging.INFO)
 

@@ -214,3 +214,50 @@ INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
 INFO:root:Session ID: 16675861-a5ff-408e-8287-d9ea0a06fe5e, AI Response: AetherTech Innovations, Inc. is located at 789 Cloudline Drive, Future City, New York, USA.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.4 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.4 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, User Query: Tell me what vortex robotics do?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.f2cebc04-de46-4169-97d5-a26d35a31fd6&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, AI Response: Vortex Robotics, Inc. specializes in robotics and automation solutions for various sectors, including industrial manufacturing, healthcare, and smart logistics. The company develops proprietary robotics systems and AI-powered automation tools designed to optimize production lines, enhance precision in surgical procedures, and enable efficient logistics operations. Their flagship product line, the VORBOT Series, offers scalable and intelligent robotic solutions aimed at setting new standards in autonomous robotics. Overall, Vortex Robotics focuses on redefining automation through innovation and sustainability.
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, User Query: where are its headquarters?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.f2cebc04-de46-4169-97d5-a26d35a31fd6&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, AI Response: Vortex Robotics, Inc. is headquartered at 1234 Tech Drive, Robotics District, San Francisco, California, USA.
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, User Query: what is its mission?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.f2cebc04-de46-4169-97d5-a26d35a31fd6&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, AI Response: Vortex Robotics, Inc.'s mission statement is: "Redefining automation through innovation, precision, and sustainable robotics."
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, User Query: what is its moto?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.f2cebc04-de46-4169-97d5-a26d35a31fd6&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, AI Response: The context provided does not specify a motto for Vortex Robotics, Inc. However, their mission statement emphasizes their focus on innovation, precision, and sustainability in robotics. If you're looking for a specific phrase that captures their ethos, you could consider their mission as reflective of their overarching goals.
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, User Query: what is its mission by 2030?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.f2cebc04-de46-4169-97d5-a26d35a31fd6&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: f2cebc04-de46-4169-97d5-a26d35a31fd6, AI Response: By 2030, Vortex Robotics aims to lead the global robotics revolution by creating fully autonomous and environmentally sustainable robots that transform industries and improve quality of life worldwide.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.5 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.5 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"

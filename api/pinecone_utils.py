@@ -5,12 +5,10 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_core.documents import Document
 from pinecone import Pinecone, ServerlessSpec
 from typing import List
-import aiofiles
 import asyncio
 import os
 from dotenv import load_dotenv
 import time
-import uuid
 
 load_dotenv()
 
