@@ -1,4 +1,6 @@
 .env
 __pycache__/
-.vercel
-.streamlit/
+env
+.aws-sam/
+samconfig.toml
+env.json
