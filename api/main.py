@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, HTTPException, File
+from fastapi.middleware.cors import CORSMiddleware
 import aiofiles
 from pydantic_models import QueryInput, QueryResponse, DocumentInfo, DeleteFileRequest
 from langchain_utils import get_rag_chain
@@ -8,16 +9,59 @@ from pinecone_utils import index_document_to_pinecone, delete_doc_from_pinecone
 import os
 import uuid
 import logging
+from mangum import Mangum
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.openapi.utils import get_openapi
+from fastapi.responses import JSONResponse
 
 logging.basicConfig(filename="app.log", level=logging.INFO)
 
 s3_client = S3Client()
 
-app = FastAPI()
+app = FastAPI(
+    title="FastAPI RAG Chatbot",
+    description="A RAG-based chatbot API with document management",
+    version="2.0",
+    docs_url=None,
+    redoc_url=None,
+    root_path="/Prod"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/docs", include_in_schema=False)
+async def custom_swagger_ui_html():
+    return get_swagger_ui_html(
+        openapi_url="./openapi.json",  # Updated path
+        title="FastAPI RAG Chatbot API Documentation",
+        swagger_favicon_url="",
+        swagger_ui_parameters={"defaultModelsExpandDepth": -1}
+    )
+
+@app.get("/openapi.json", include_in_schema=False)
+async def get_openapi_endpoint():
+    if app.openapi_schema:
+        return app.openapi_schema
+    
+    openapi_schema = get_openapi(
+        title="FastAPI RAG Chatbot",
+        version="2.0",
+        description="A RAG-based chatbot API with document management",
+        routes=app.routes,
+        servers=[{"url": "/Prod"}]  # Add this line
+    )
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
 
 @app.get("/")
 async def hello_world():
-    return {"message": "Hello World!!"}
+    return {"message": "Hello Zeeshan!!"}
 
 
 @app.post("/chat", response_model=QueryResponse)
@@ -49,7 +93,7 @@ async def upload_and_index_document(file: UploadFile = File(...)):
     
     # Generate a unique filename to prevent collisions in S3
     unique_filename = f"{uuid.uuid4()}{file_extension}"
-    temp_file_path = f"temp_{unique_filename}"
+    temp_file_path = f"/tmp/temp_{unique_filename}"
 
     try:
         # Save uploaded file temporarily
@@ -126,3 +170,8 @@ async def delete_document(request: DeleteFileRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
         
+handler = Mangum(app)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app)

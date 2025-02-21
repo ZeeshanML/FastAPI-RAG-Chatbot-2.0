@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  OpenAIAPIKey:
+    Type: String
+    NoEcho: true
+  PineconeAPIKey:
+    Type: String
+    NoEcho: true
+  SupabaseURL:
+    Type: String
+  SupabaseKey:
+    Type: String
+    NoEcho: true
+  AWSAccessKeyID:
+    Type: String
+    NoEcho: true
+  AWSSecretAccessKey:
+    Type: String
+    NoEcho: true
+  AWSRegion:
+    Type: String
+    Default: "us-east-1"
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+  Api:
+    Cors:
+      AllowMethods: "'*'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,Accept'"
+      AllowOrigin: "'*'"
+    BinaryMediaTypes:
+      - "*/*"
+
+Resources:
+  FastAPIFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: main.handler
+      Runtime: python3.11
+      Environment:
+        Variables:
+          OPENAI_API_KEY: !Ref OpenAIAPIKey
+          PINECONE_API_KEY: !Ref PineconeAPIKey
+          SUPABASE_URL: !Ref SupabaseURL
+          SUPABASE_KEY: !Ref SupabaseKey
+          AWS_BUCKET_NAME: "fastapi-rag-chatbot"
+          CUSTOM_AWS_ACCESS_KEY: !Ref AWSAccessKeyID
+          CUSTOM_AWS_SECRET_KEY: !Ref AWSSecretAccessKey
+          CUSTOM_AWS_REGION: !Ref AWSRegion
+      Policies:
+        - S3FullAccessPolicy:
+            BucketName: "fastapi-rag-chatbot"
+      Events:
+        ApiRoot:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+        ApiCatchAll:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  ApiURL:
+    Description: API Gateway endpoint URL
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
