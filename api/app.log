@@ -261,3 +261,14 @@ INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/do
 INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.5 "HTTP/2 200 OK"
 INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
 INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:root:Session ID: 6aebbe38-9de6-467b-bca0-1b1a1ec01bc2, User Query: where are vortex tech headquarters?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.6aebbe38-9de6-467b-bca0-1b1a1ec01bc2&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 6aebbe38-9de6-467b-bca0-1b1a1ec01bc2, AI Response: Vortex Robotics, Inc. is headquartered at 1234 Tech Drive, Robotics District, San Francisco, California, USA.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.12 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.12 "HTTP/2 200 OK"
