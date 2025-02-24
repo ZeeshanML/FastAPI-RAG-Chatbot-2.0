@@ -9,7 +9,7 @@ pypdf
 python-dotenv
 python-multipart
 aiofiles
-pinecone-client
+pinecone
 langchain-pinecone
 supabase
 asyncpg

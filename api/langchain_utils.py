@@ -3,12 +3,13 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from typing import List
-from langchain_core.documents import Document
 import os
 from pinecone_utils import vectorstore
 from dotenv import load_dotenv
 import asyncio
+import logging
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -43,28 +44,34 @@ qa_prompt = ChatPromptTemplate.from_messages(
 )
 
 async def get_rag_chain(model = "gpt-4o-mini"):
-    """
-    Create and return an async RAG chain
-    """
-    llm = ChatOpenAI(
-        api_key=openai_api_key, 
-        model=model,
-        # streaming=True 
-    )
-    
-    history_aware_retriever = await asyncio.get_event_loop().run_in_executor(
-        None,
-        lambda: create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
-    )
+    """Create and return an async RAG chain"""
+    try:
+        logger.info(f"Initializing RAG chain with model: {model}")
+        llm = ChatOpenAI(
+            api_key=openai_api_key, 
+            model=model,
+        )
+        
+        logger.info("Creating history-aware retriever")
+        history_aware_retriever = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
+        )
 
-    qa_chain = await asyncio.get_event_loop().run_in_executor(
-        None,
-        lambda: create_stuff_documents_chain(llm, qa_prompt)
-    )
-    
-    rag_chain = await asyncio.get_event_loop().run_in_executor(
-        None,
-        lambda: create_retrieval_chain(history_aware_retriever, qa_chain)
-    )
-    
-    return rag_chain
+        logger.info("Creating QA chain")
+        qa_chain = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: create_stuff_documents_chain(llm, qa_prompt)
+        )
+
+        logger.info("Creating final RAG chain")
+        rag_chain = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: create_retrieval_chain(history_aware_retriever, qa_chain)
+        )
+        
+        logger.info("Successfully created RAG chain")
+        return rag_chain
+    except Exception as e:
+        logger.error(f"Error creating RAG chain: {str(e)}", exc_info=True)
+        raise

@@ -1,9 +1,11 @@
 from supabase import create_client, Client
 from datetime import datetime, timezone
-
 from typing import Dict, List
 import os
 from dotenv import load_dotenv
+import logging
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -14,17 +16,20 @@ supabase: Client = create_client(
 
 async def get_all_documents() -> List[Dict]:
     try:
+        logger.info("Fetching all documents from database")
         response = supabase.table("document_store").select("*")\
             .order("upload_timestamp", desc=True)\
             .execute()
+        logger.info(f"Successfully retrieved {len(response.data)} documents")
         return response.data
     except Exception as e:
-        print(f"Error fetching documents: {e}")
+        logger.error(f"Error fetching documents: {str(e)}", exc_info=True)
         return []
     
 
 async def insert_application_logs(session_id: str, user_query: str, gpt_response: str, model: str):
     try:
+        logger.info(f"Inserting application log for session: {session_id}")
         supabase.table("application_logs").insert({
             "session_id": session_id,
             "user_query": user_query,
@@ -32,8 +37,9 @@ async def insert_application_logs(session_id: str, user_query: str, gpt_response
             "model": model,
             "created_at": datetime.now(timezone.utc).isoformat()
         }).execute()
+        logger.info("Successfully inserted application log")
     except Exception as e:
-        print(f"Error inserting application logs: {e}")
+        logger.error(f"Error inserting application logs: {str(e)}", exc_info=True)
 
 
 async def get_chat_history(session_id: str) -> List[Dict]:
