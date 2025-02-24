@@ -125,22 +125,21 @@ Access the Swagger UI at: `http://localhost:8000/docs`
 |----------|---------|-------------|
 | `/upload-doc` | POST | Upload and process documents |
 | `/chat` | POST | Send messages to the chatbot |
-| `/documents` | GET | List all documents |
-| `/documents/{id}` | DELETE | Delete a document |
-| `/chat-history` | GET | Retrieve chat history |
+| `/list-docs` | GET | List all documents |
+| `/delete-doc/{id}` | DELETE | Delete a document |
 
 ## 🔧 Configuration
 
 ### Pinecone Setup
 ```python
-INDEX_NAME = "fastapi-rag-chatbot"
+INDEX_NAME = "pinecone-index"
 DIMENSION = 1536  # OpenAI embedding dimension
 METRIC = "cosine"
 ```
 
 ### AWS S3 Configuration
 ```python
-BUCKET_NAME = "fastapi-rag-chatbot"
+BUCKET_NAME = "document-bucket"
 REGION = "us-east-1"
 ```
 
