@@ -169,4 +169,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Your Name - [@ZeeshanML](https://github.com/ZeeshanML)
 
-Project Link: [https://github.com/ZeeshanML/FastAPI-RAG-Chatbot](https://github.com/ZeeshanML/FastAPI-RAG-Chatbot)
+Project Link: [https://github.com/ZeeshanML/FastAPI-RAG-Chatbot](https://github.com/ZeeshanML/FastAPI-RAG-Chatbot-2.0)
