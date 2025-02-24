@@ -272,3 +272,49 @@ INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/a
 INFO:root:Session ID: 6aebbe38-9de6-467b-bca0-1b1a1ec01bc2, AI Response: Vortex Robotics, Inc. is headquartered at 1234 Tech Drive, Robotics District, San Francisco, California, USA.
 INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.12 "HTTP/2 200 OK"
 INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.12 "HTTP/2 200 OK"
+INFO:root:Session ID: 245472d4-7f98-428e-9965-3dc78998a130, User Query: hi, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.245472d4-7f98-428e-9965-3dc78998a130&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 245472d4-7f98-428e-9965-3dc78998a130, AI Response: Hello! How can I assist you today?
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.14 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.14 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store "HTTP/2 201 Created"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, User Query: what is helixbio systems vision by 2030?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.7cdf5a5b-3306-46e0-b42f-6d7833ab0d19&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, AI Response: By 2030, HelixBio Systems envisions a world where genetic innovations drive sustainable agriculture, enhance global health, and create eco-friendly industrial materials, contributing to a greener, healthier planet.
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, User Query: where is it headquartered?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.7cdf5a5b-3306-46e0-b42f-6d7833ab0d19&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, AI Response: HelixBio Systems, Inc. is headquartered at 6789 Genetic Drive, BioTech Park, Boston, Massachusetts, USA.
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, User Query: when was it founded?, Model: gpt-4o-mini
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs?select=user_query%2Cgpt_response&session_id=eq.7cdf5a5b-3306-46e0-b42f-6d7833ab0d19&order=created_at "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://qucxigeasiowkvekalsk.supabase.co/rest/v1/application_logs "HTTP/2 201 Created"
+INFO:root:Session ID: 7cdf5a5b-3306-46e0-b42f-6d7833ab0d19, AI Response: HelixBio Systems, Inc. was founded in 2015.
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&id=eq.15 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: DELETE https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?id=eq.15 "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
+INFO:httpx:HTTP Request: GET https://qucxigeasiowkvekalsk.supabase.co/rest/v1/document_store?select=%2A&order=upload_timestamp.desc "HTTP/2 200 OK"
